@@ -23,7 +23,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      order: 3;
+      order: 1;
 
       .card-title {
         font-size: 16px;
@@ -51,7 +51,7 @@
     .menu-dots {
       color: $text-secondary;
       cursor: pointer;
-      order: 1;
+      order: 3;
 
       .material-icons {
         font-size: 20px;
