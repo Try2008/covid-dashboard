@@ -23,12 +23,13 @@ export function getDailyConfirmedConfig(): Highcharts.Options {
       categories,
       reversed: true,
       title: { text: 'תאריך' },
-      labels: { useHTML: true }
+      labels: { useHTML: true, step: 3 } // מציג תאריך כל 3 ימים
     },
     yAxis: {
       opposite: true,
       title: { text: 'מספר חולים' },
-      min: 0
+      min: 0,
+      tickInterval: 3 // ציר Y בקפיצות של 3
     },
     plotOptions: {
       column: { borderRadius: 2 }
@@ -93,7 +94,8 @@ export function getDailyTestsComboConfig(): Highcharts.Options {
     xAxis: {
       categories,
       reversed: true,
-      title: { text: 'תאריך' }
+      title: { text: 'תאריך' },
+      labels: { step: 3 } // מציג תאריך כל 3 ימים
     },
     yAxis: {
       opposite: true,
@@ -136,11 +138,13 @@ export function getChildrenTrendConfig(): Highcharts.Options {
     xAxis: {
       categories,
       reversed: true,
-      title: { text: 'תאריך' }
+      title: { text: 'תאריך' },
+      labels: { step: 3 }
     },
     yAxis: {
       opposite: true,
-      title: { text: 'מספר מאומתים' }
+      title: { text: 'מספר מאומתים' },
+      min: 0
     },
     plotOptions: {
       line: { marker: { enabled: true, radius: 3 } }
@@ -151,25 +155,26 @@ export function getChildrenTrendConfig(): Highcharts.Options {
         type: 'line',
         name: '0-4',
         color: '#5DADE2',
-        data: [2, 5, 3, 1, 4, 7, 3, 1, 4, 6, 3, 4, 5, 2, 1, 3, 5, 6, 2, 4, 5, 3, 1, 4, 5, 2, 3, 0]
+        // ערכים נמוכים ורגועים - קרוב למקור
+        data: [0, 1, 0, 0, 1, 2, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 2, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0]
       },
       {
         type: 'line',
         name: '5-11',
         color: '#9CB832',
-        data: [4, 9, 6, 2, 7, 12, 5, 2, 7, 11, 5, 7, 9, 3, 2, 6, 9, 11, 4, 7, 9, 5, 2, 7, 9, 4, 6, 1]
+        data: [1, 2, 1, 0, 2, 3, 1, 0, 2, 3, 1, 2, 2, 0, 0, 1, 2, 3, 1, 2, 2, 1, 0, 2, 2, 1, 1, 0]
       },
       {
         type: 'line',
         name: '12-15',
         color: '#0E9594',
-        data: [3, 7, 5, 2, 6, 10, 4, 2, 6, 9, 4, 6, 8, 2, 1, 5, 8, 10, 3, 6, 8, 4, 2, 6, 8, 3, 5, 1]
+        data: [0, 1, 1, 0, 1, 2, 1, 0, 1, 2, 1, 1, 2, 0, 0, 1, 2, 2, 1, 1, 2, 1, 0, 1, 2, 1, 1, 0]
       },
       {
         type: 'line',
         name: '16-19',
         color: '#B19CD9',
-        data: [2, 6, 4, 1, 5, 9, 3, 1, 5, 8, 3, 5, 7, 2, 1, 4, 7, 9, 3, 5, 7, 4, 1, 5, 7, 3, 4, 1]
+        data: [0, 1, 1, 0, 1, 2, 1, 0, 1, 2, 0, 1, 2, 0, 0, 1, 2, 2, 0, 1, 2, 1, 0, 1, 2, 0, 1, 0]
       }
     ]
   };
@@ -193,24 +198,26 @@ export function getVaccinationByAgeConfig(): Highcharts.Options {
       bar: { stacking: 'percent', borderRadius: 2 }
     },
     legend: { align: 'right', verticalAlign: 'top', useHTML: true },
+    // סדר הסדרות: הראשונה מוצגת מימין בגרף stacked bar
+    // לא מחוסנים → ללא תוקף → מחוסנים (מימין לשמאל כמו במקור)
     series: [
       {
         type: 'bar',
-        name: 'מחוסנים',
-        color: '#0E9594',
-        data: [82, 79, 74, 68, 62, 55, 50, 45, 40, 35]
+        name: 'לא מחוסנים',
+        color: '#5DADE2', // כחול בהיר - מימין
+        data: [8, 10, 14, 19, 24, 30, 34, 38, 42, 46]
       },
       {
         type: 'bar',
         name: 'מחוסנים ללא תוקף',
-        color: '#9CB832',
+        color: '#9CB832', // ירוק-ליים - אמצע
         data: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
       },
       {
         type: 'bar',
-        name: 'לא מחוסנים',
-        color: '#5DADE2',
-        data: [8, 10, 14, 19, 24, 30, 34, 38, 42, 46]
+        name: 'מחוסנים',
+        color: '#0E9594', // טורקיז - משמאל
+        data: [82, 79, 74, 68, 62, 55, 50, 45, 40, 35]
       }
     ]
   };
