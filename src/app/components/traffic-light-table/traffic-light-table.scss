@@ -104,7 +104,7 @@
     border-radius: 6px;
   }
 
-  .vaccination-table {
+  .traffic-light-table {
     width: 100%;
     border-collapse: collapse;
     text-align: right;
@@ -116,28 +116,6 @@
       position: sticky;
       top: 0;
       z-index: 1;
-
-      .group-header-row {
-        background-color: $bg-banner;
-
-        .group-cell,
-        .group-empty {
-          padding: 10px 16px;
-          font-weight: $font-weight-semibold;
-          color: $text-primary;
-          text-align: right;
-          border-bottom: 1px solid $border-input;
-        }
-
-        .group-empty {
-          background-color: $bg-card;
-          border-bottom: 1px solid $bg-card;
-        }
-
-        .group-cell + .group-cell {
-          border-right: 1px solid $border-input;
-        }
-      }
 
       .column-header-row {
         background-color: $bg-banner;
@@ -155,7 +133,7 @@
             align-items: center;
             gap: 4px;
             width: 100%;
-            padding: 10px 16px;
+            padding: 12px 16px;
             background: transparent;
             border: 0;
             cursor: pointer;
@@ -221,6 +199,23 @@
             color: $text-secondary;
             padding: 32px 16px;
           }
+
+          &.growth-cell {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 4px;
+            color: $text-secondary;
+
+            &.growth-high { color: #E74C3C; font-weight: $font-weight-semibold; }
+            &.growth-mid  { color: #F39C12; }
+            &.growth-down { color: #27AE60; }
+
+            .growth-arrow {
+              font-size: 11px;
+              line-height: 1;
+            }
+          }
         }
 
         &:last-child td {
@@ -228,5 +223,29 @@
         }
       }
     }
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: $font-weight-semibold;
+    line-height: 1.4;
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: currentColor;
+      opacity: 0.85;
+    }
+
+    &.status-red    { background-color: #FDECEA; color: #C0392B; }
+    &.status-orange { background-color: #FEF1E0; color: #C46710; }
+    &.status-yellow { background-color: #FCF7DA; color: #9A7B0A; }
+    &.status-green  { background-color: #E6F5EA; color: #1F8A4C; }
   }
 }

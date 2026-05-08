@@ -10,6 +10,7 @@ import { TestsSection } from './sections/tests-section/tests-section';
 import { InvestigationsSection } from './sections/investigations-section/investigations-section';
 import { ReinfectionSection } from './sections/reinfection-section/reinfection-section';
 import { VaccinationPopulationSection } from './sections/vaccination-population-section/vaccination-population-section';
+import { TrafficLightSection } from './sections/traffic-light-section/traffic-light-section';
 import { HighchartsConfigService } from './services/highcharts-config.service';
 
 @Component({
@@ -24,7 +25,8 @@ import { HighchartsConfigService } from './services/highcharts-config.service';
     TestsSection,
     InvestigationsSection,
     ReinfectionSection,
-    VaccinationPopulationSection
+    VaccinationPopulationSection,
+    TrafficLightSection
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

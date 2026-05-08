@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CityVaccination } from '../../models/city-vaccination.model';
 import { SortState } from '../../models/sort-state.model';
 import { citiesVaccinationData } from '../../data/cities-vaccination.data';
+import { sortByColumn } from '../../utils/sort.util';
 
 interface ColumnDef {
   key: keyof CityVaccination;
@@ -69,23 +70,12 @@ export class CitiesVaccinationTable {
 
   private applySortAndFilter(): void {
     const term = this.searchTerm.trim();
-    let result = term
+    const filtered = term
       ? this.cities.filter(city => city.cityName.includes(term))
-      : [...this.cities];
+      : this.cities;
 
-    if (this.sortState) {
-      const column = this.sortState.column as keyof CityVaccination;
-      const dir = this.sortState.direction === 'asc' ? 1 : -1;
-      result.sort((a, b) => {
-        const aVal = a[column];
-        const bVal = b[column];
-        if (typeof aVal === 'number' && typeof bVal === 'number') {
-          return (aVal - bVal) * dir;
-        }
-        return String(aVal).localeCompare(String(bVal), 'he') * dir;
-      });
-    }
-
-    this.displayedCities = result;
+    this.displayedCities = this.sortState
+      ? sortByColumn(filtered, this.sortState.column as keyof CityVaccination, this.sortState.direction)
+      : [...filtered];
   }
 }
