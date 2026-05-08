@@ -1,10 +1,14 @@
 <app-dashboard-section title="מדדים מרכזיים" [hasLinks]="true">
-  <div class="charts-grid">
+  <div class="charts-grid-2">
     <app-chart-card
       title="מאומתים חדשים יומי"
       tooltipText="מספר המאומתים החדשים שהתגלו מדי יום וממוצע נע של 7 ימים"
       [chartOptions]="chartOptions"
       [hasMonthFilter]="true"
+    ></app-chart-card>
+    <app-chart-card
+      title="ממוצע מאומתים שבועי"
+      [isPlaceholder]="true"
     ></app-chart-card>
   </div>
 </app-dashboard-section>

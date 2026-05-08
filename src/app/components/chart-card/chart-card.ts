@@ -13,6 +13,7 @@ import * as Highcharts from 'highcharts';
 export class ChartCard {
   @Input() title: string = '';
   @Input() tooltipText?: string;
-  @Input() chartOptions!: Highcharts.Options;
+  @Input() chartOptions?: Highcharts.Options;
   @Input() hasMonthFilter: boolean = false;
+  @Input() isPlaceholder: boolean = false;
 }

@@ -1,10 +1,17 @@
 <app-dashboard-section title="התחסנות האוכלוסיה" [hasLinks]="true">
-  <div class="charts-grid">
+  <div class="charts-grid-2">
     <app-chart-card
       title="אחוז מתחסנים לפי קבוצות גיל"
       tooltipText="אחוז המתחסנים מתוך האוכלוסיה לפי קבוצות גיל"
       [chartOptions]="vaccinationByAgeOptions"
-      [hasMonthFilter]="false"
+    ></app-chart-card>
+    <app-chart-card
+      title="מתחסנים מצטבר"
+      [isPlaceholder]="true"
+    ></app-chart-card>
+    <app-chart-card
+      title="מספר התחסנויות - יומי"
+      [isPlaceholder]="true"
     ></app-chart-card>
   </div>
 </app-dashboard-section>

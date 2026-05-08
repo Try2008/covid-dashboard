@@ -1,5 +1,5 @@
 <app-dashboard-section title="בדיקות" [hasLinks]="true">
-  <div class="charts-grid">
+  <div class="charts-grid-2">
     <app-chart-card
       title="מספר נבדקים לפי קבוצות גיל"
       tooltipText="מספר הנבדקים ונבדקים חיוביים לפי קבוצות גיל"
@@ -11,6 +11,10 @@
       tooltipText="מספר הבדיקות היומי לפי סוגי בדיקה וממוצע נע"
       [chartOptions]="dailyTestsOptions"
       [hasMonthFilter]="true"
+    ></app-chart-card>
+    <app-chart-card
+      title="אחוז נבדקים חיוביים - יומי"
+      [isPlaceholder]="true"
     ></app-chart-card>
   </div>
 </app-dashboard-section>
