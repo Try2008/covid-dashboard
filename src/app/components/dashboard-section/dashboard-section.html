@@ -1,0 +1,17 @@
+<section class="dashboard-section">
+  <div class="section-header">
+    <div class="header-right">
+      <h2 class="section-title">{{ title }}</h2>
+    </div>
+    <div class="header-left" *ngIf="hasLinks">
+      <button class="links-btn">
+        <span class="material-icons">expand_more</span>
+        <span>לינקים בנושא</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="section-content">
+    <ng-content></ng-content>
+  </div>
+</section>

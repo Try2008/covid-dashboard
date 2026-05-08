@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+
+.dashboard-section {
+  padding: 32px 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #E4E9F2;
+    padding-bottom: 12px;
+
+    .header-right {
+      .section-title {
+        font-size: 20px;
+        font-weight: $font-weight-semibold;
+        color: $text-heading;
+        margin: 0;
+      }
+    }
+
+    .header-left {
+      .links-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        border: none;
+        color: #0068F5; // כחול לינקים
+        font-family: $font-family-base;
+        font-size: 14px;
+        font-weight: $font-weight-normal;
+        cursor: pointer;
+        padding: 8px 0;
+
+        .material-icons {
+          font-size: 18px;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .section-content {
+    width: 100%;
+  }
+}

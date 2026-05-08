@@ -1,0 +1,10 @@
+<app-dashboard-section title="התחסנות האוכלוסיה" [hasLinks]="true">
+  <div class="charts-grid">
+    <app-chart-card
+      title="אחוז מתחסנים לפי קבוצות גיל"
+      tooltipText="אחוז המתחסנים מתוך האוכלוסיה לפי קבוצות גיל"
+      [chartOptions]="vaccinationByAgeOptions"
+      [hasMonthFilter]="false"
+    ></app-chart-card>
+  </div>
+</app-dashboard-section>

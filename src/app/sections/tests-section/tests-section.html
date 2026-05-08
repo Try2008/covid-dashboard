@@ -1,0 +1,16 @@
+<app-dashboard-section title="בדיקות" [hasLinks]="true">
+  <div class="charts-grid">
+    <app-chart-card
+      title="מספר נבדקים לפי קבוצות גיל"
+      tooltipText="מספר הנבדקים ונבדקים חיוביים לפי קבוצות גיל"
+      [chartOptions]="testedByAgeOptions"
+      [hasMonthFilter]="true"
+    ></app-chart-card>
+    <app-chart-card
+      title="מספר בדיקות קורונה - יומי"
+      tooltipText="מספר הבדיקות היומי לפי סוגי בדיקה וממוצע נע"
+      [chartOptions]="dailyTestsOptions"
+      [hasMonthFilter]="true"
+    ></app-chart-card>
+  </div>
+</app-dashboard-section>

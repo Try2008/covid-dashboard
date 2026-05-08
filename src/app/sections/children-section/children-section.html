@@ -1,0 +1,10 @@
+<app-dashboard-section title="תחלואה ואשפוזי ילדים" [hasLinks]="true">
+  <div class="charts-grid">
+    <app-chart-card
+      title="מגמת ילדים מאומתים לפי קבוצות גיל"
+      tooltipText="מגמת המאומתים בקרב ילדים לפי קבוצות גיל לאורך הזמן"
+      [chartOptions]="childrenTrendOptions"
+      [hasMonthFilter]="true"
+    ></app-chart-card>
+  </div>
+</app-dashboard-section>
