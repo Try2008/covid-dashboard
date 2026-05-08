@@ -7,6 +7,6 @@ export interface CityVaccination {
   dose2Percentage: number;
   dose3Count: number;
   dose3Percentage: number;
-  dose4Count?: number;
-  dose4Percentage?: number;
+  dose4Count: number;
+  dose4Percentage: number;
 }

@@ -57,6 +57,7 @@
         font-weight: $font-weight-normal;
         cursor: pointer;
         padding: 8px 0;
+        transition: color 0.15s ease;
 
         @include mobile-only {
           font-size: 13px;

@@ -1,59 +1,88 @@
-# CovidDashboard
+# דשבורד נתוני קורונה - Covid-19 Dashboard Clone
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+קלון של דשבורד הקורונה של משרד הבריאות הישראלי, בנוי ב-Angular עם תמיכה מלאה ב-RTL ועברית.
+מבוסס על: [datadashboard.health.gov.il/COVID-19/general](https://datadashboard.health.gov.il/COVID-19/general)
 
-## Development server
+## טכנולוגיות
 
-To start a local development server, run:
+- **Angular 21+** (Standalone components, Signals-ready)
+- **Highcharts** (highcharts-angular) — גרפים אינטראקטיביים
+- **SCSS** עם design tokens, mixins וב-breakpoints מובנים
+- **TypeScript** strict mode
+- **Open Sans Hebrew** + **Material Icons**
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## הרצה
 
 ```bash
-ng generate component component-name
+npm install
+npm start          # שרת פיתוח על http://localhost:4200
+npm run build      # build ל-production לתיקיית dist/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## מבנה הפרויקט
+
+```
+src/app/
+├── components/                 # קומפוננטות לשימוש חוזר
+│   ├── header/                 # כותרת עליונה (sticky)
+│   ├── navbar/                 # ניווט עם hamburger אוטומטי במובייל
+│   ├── dashboard-section/      # מעטפת אחידה לסקשן
+│   ├── stat-card/              # כרטיסיית סטטיסטיקה (5 כרטיסים ב-Overview)
+│   ├── trend-card/             # כרטיסיית מגמה שבועית
+│   ├── chart-card/             # מעטפת לגרפים (placeholder או Highcharts)
+│   ├── cities-vaccination-table/   # טבלת חיסונים לפי יישוב
+│   └── traffic-light-table/    # טבלת מודל הרמזור
+├── sections/                   # סקשני העמוד
+│   ├── overview-section/
+│   ├── central-indicators-section/
+│   ├── traffic-light-section/
+│   ├── children-section/
+│   ├── vaccination-impact-section/
+│   ├── deaths-section/
+│   ├── tests-section/
+│   ├── investigations-section/
+│   ├── reinfection-section/
+│   └── vaccination-population-section/
+├── data/                       # mock data (חיסונים, רמזור, סטטיסטיקות)
+├── models/                     # TypeScript interfaces
+├── services/                   # Highcharts global config
+└── utils/                      # פונקציות עזר (sort)
+```
+
+## פיצ'רים
+
+### תוכן
+- **10 סקשנים מלאים** — סקירה כללית, מדדים מרכזיים, מודל הרמזור, ילדים, השפעת חיסונים, נפטרים, בדיקות, תחקורים, תחלואה חוזרת, התחסנות אוכלוסיה
+- **5 גרפים אינטראקטיביים** של Highcharts (column, line, area)
+- **2 טבלאות** עם ~40 יישובים בכל אחת
+
+### אינטראקטיביות
+- **מיון בטבלאות** — לחיצה על כותרת עמודה ממיינת asc/desc, כולל מיון לפי "חומרה" של צבע הרמזור (green→yellow→orange→red) ומיון מחרוזות עברי עם `localeCompare('he')`
+- **חיפוש בטבלאות** — סינון יישוב לפי שם בזמן הקלדה
+- **ניווט עם גלילה לסקשן** — לחיצה על טאב גוללת חלק לסקשן הרלוונטי
+- **תפריט hamburger** — מתחת ל-1024px הניווט עובר לתפריט נפילה אנכי
+- **Tooltips** מעוצבים על אייקוני ה-i (CSS pseudo-elements, ללא ספריה)
+- **Hover effects** עדינים על כרטיסיות, שורות, וכפתורים
+- **Focus states** עקביים לנגישות מקלדת (`:focus-visible`)
+
+### עיצוב ורספונסיביות
+- **RTL מלא** עם `dir="rtl"` ו-`text-align: right`
+- **Sticky header + navbar** — נשארים בראש בגלילה
+- **Breakpoints:** mobile (<600px), tablet (<1024px), desktop (<1440px), wide (≥1440px)
+- **Grid responsive** — overview cards עוברים מ-5→3→2→1 עמודות לפי הרוחב
+- **טבלאות עם גלילה אופקית** במובייל + sticky header פנימי
+
+## הערות מימוש
+
+- כל הקומפוננטות הן **standalone** (לא NgModule)
+- **Mock data בלבד** — הנתונים סטטיים, ללא API
+- **Highcharts global config** ב-[`services/highcharts-config.service.ts`](src/app/services/highcharts-config.service.ts) מגדיר RTL וכיוון לכל הגרפים
+- **Sort utility גנרי** ב-[`utils/sort.util.ts`](src/app/utils/sort.util.ts) משותף לשתי הטבלאות עם תמיכה ב-`customOrder` למיון לפי דירוג מותאם
+
+## Build production
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+הפלט נכתב ל-`dist/covid-dashboard/`. הפרויקט מקומפל ל-bundle אחד מינימלי שניתן להעלות לכל hosting סטטי.

@@ -12,6 +12,11 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
 
   @include mobile-only {
     padding: 16px;
@@ -62,6 +67,18 @@
       color: $text-secondary;
       cursor: pointer;
       order: 3;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover {
+        background-color: $bg-filter;
+        color: $text-primary;
+      }
 
       .material-icons {
         font-size: 20px;

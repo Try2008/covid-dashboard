@@ -1,9 +1,5 @@
 import { CityVaccination } from '../models/city-vaccination.model';
 
-function calc(pop: number, pct1: number, pct2: number, pct3: number, pct4: number): CityVaccination['dose1Count'] {
-  return Math.round(pop * pct1 / 100);
-}
-
 function makeCity(
   cityName: string, population: number,
   p1: number, p2: number, p3: number, p4: number

@@ -2,7 +2,14 @@
   <div class="card-header">
     <div class="title-with-info">
       <h3 class="card-title">{{ title }}</h3>
-      <span class="info-icon" *ngIf="tooltipText && !isPlaceholder" [title]="tooltipText">i</span>
+      <span
+        class="info-icon"
+        *ngIf="tooltipText && !isPlaceholder"
+        [attr.data-tooltip]="tooltipText"
+        [attr.aria-label]="tooltipText"
+        tabindex="0"
+        role="tooltip"
+      >i</span>
     </div>
     <div class="menu-dots">
       <span class="material-icons">more_vert</span>
