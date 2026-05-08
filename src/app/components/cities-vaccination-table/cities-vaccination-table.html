@@ -1,0 +1,75 @@
+<div class="table-card">
+  <div class="card-header">
+    <div class="menu-dots">
+      <span class="material-icons">more_vert</span>
+    </div>
+    <div class="search-box">
+      <span class="material-icons search-icon">search</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="חיפוש יישוב..."
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange()"
+      />
+    </div>
+    <div class="title-with-info">
+      <h3 class="card-title">מתחסנים לפי יישובים</h3>
+      <span class="info-icon" title="נתוני התחסנות לפי יישובים בישראל">i</span>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="vaccination-table">
+      <thead>
+        <tr class="group-header-row">
+          <th class="group-empty" colspan="2"></th>
+          <th class="group-cell" colspan="2">מנה ראשונה</th>
+          <th class="group-cell" colspan="2">מנה שנייה</th>
+          <th class="group-cell" colspan="2">מנה שלישית</th>
+          <th class="group-cell" colspan="2">מנה רביעית</th>
+        </tr>
+        <tr class="column-header-row">
+          <th
+            *ngFor="let col of columns"
+            class="column-header"
+            [class.numeric]="col.isNumeric"
+            [attr.aria-sort]="ariaSortFor(col.key)"
+            (click)="onSortColumn(col.key)"
+          >
+            <button type="button" class="sort-button">
+              <span class="header-label">{{ col.label }}</span>
+              <span class="sort-arrows">
+                <span
+                  class="material-icons arrow arrow-up"
+                  [class.active]="isSortedBy(col.key, 'asc')"
+                >arrow_drop_up</span>
+                <span
+                  class="material-icons arrow arrow-down"
+                  [class.active]="isSortedBy(col.key, 'desc')"
+                >arrow_drop_down</span>
+              </span>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let city of displayedCities">
+          <td class="city-name">{{ city.cityName }}</td>
+          <td class="numeric">{{ city.population | number }}</td>
+          <td class="numeric">{{ city.dose1Count | number }}</td>
+          <td class="numeric">{{ city.dose1Percentage | number:'1.1-1' }}%</td>
+          <td class="numeric">{{ city.dose2Count | number }}</td>
+          <td class="numeric">{{ city.dose2Percentage | number:'1.1-1' }}%</td>
+          <td class="numeric">{{ city.dose3Count | number }}</td>
+          <td class="numeric">{{ city.dose3Percentage | number:'1.1-1' }}%</td>
+          <td class="numeric">{{ city.dose4Count | number }}</td>
+          <td class="numeric">{{ city.dose4Percentage | number:'1.1-1' }}%</td>
+        </tr>
+        <tr *ngIf="displayedCities.length === 0">
+          <td class="empty-state" [attr.colspan]="columns.length">לא נמצאו יישובים תואמים</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

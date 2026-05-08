@@ -1,0 +1,236 @@
+@import '../../../styles/variables';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.table-card {
+  background-color: $bg-card;
+  border-radius: $border-radius-card;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
+
+    .title-with-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      order: 3;
+
+      .card-title {
+        font-size: 16px;
+        font-weight: $font-weight-semibold;
+        color: $text-primary;
+        margin: 0;
+      }
+
+      .info-icon {
+        width: 16px;
+        height: 16px;
+        background-color: #374F60;
+        color: #FFFFFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: help;
+      }
+    }
+
+    .menu-dots {
+      color: $text-secondary;
+      cursor: pointer;
+      order: 1;
+
+      .material-icons {
+        font-size: 20px;
+      }
+    }
+
+    .search-box {
+      flex: 0 1 240px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      order: 2;
+
+      .search-icon {
+        position: absolute;
+        right: 10px;
+        font-size: 18px;
+        color: $text-secondary;
+        pointer-events: none;
+      }
+
+      .search-input {
+        width: 100%;
+        font-family: $font-family-base;
+        font-size: 14px;
+        color: $text-primary;
+        background-color: $bg-filter;
+        border: 1px solid $border-input;
+        border-radius: 6px;
+        padding: 8px 34px 8px 12px;
+        outline: none;
+        transition: border-color 0.15s ease;
+
+        &::placeholder {
+          color: $text-secondary;
+        }
+
+        &:focus {
+          border-color: $accent-primary;
+        }
+      }
+    }
+  }
+
+  .table-wrapper {
+    width: 100%;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 6px;
+  }
+
+  .vaccination-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+    font-family: $font-family-base;
+    font-size: 14px;
+    color: $text-primary;
+
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+
+      .group-header-row {
+        background-color: $bg-banner;
+
+        .group-cell,
+        .group-empty {
+          padding: 10px 16px;
+          font-weight: $font-weight-semibold;
+          color: $text-primary;
+          text-align: center;
+          border-bottom: 1px solid $border-input;
+        }
+
+        .group-empty {
+          background-color: $bg-card;
+          border-bottom: 1px solid $bg-card;
+        }
+
+        .group-cell + .group-cell {
+          border-right: 1px solid $border-input;
+        }
+      }
+
+      .column-header-row {
+        background-color: $bg-banner;
+
+        .column-header {
+          padding: 0;
+          font-weight: $font-weight-semibold;
+          color: $text-primary;
+          border-bottom: 1px solid $border-input;
+          user-select: none;
+          white-space: nowrap;
+
+          .sort-button {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+            padding: 10px 16px;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            font: inherit;
+            color: inherit;
+            text-align: right;
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.04);
+            }
+          }
+
+          &.numeric .sort-button {
+            justify-content: flex-end;
+          }
+
+          .sort-arrows {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 0.6;
+
+            .arrow {
+              font-size: 16px;
+              color: #B5C0CC;
+              transition: color 0.15s ease;
+
+              &.active {
+                color: $text-primary;
+              }
+            }
+
+            .arrow-up { margin-bottom: -4px; }
+            .arrow-down { margin-top: -4px; }
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: $bg-card;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: $bg-main;
+        }
+
+        td {
+          padding: 12px 16px;
+          color: $text-primary;
+          border-bottom: 1px solid $border-input;
+          white-space: nowrap;
+
+          &.numeric {
+            text-align: left;
+            direction: ltr;
+            font-variant-numeric: tabular-nums;
+          }
+
+          &.city-name {
+            font-weight: $font-weight-semibold;
+          }
+
+          &.empty-state {
+            text-align: center;
+            color: $text-secondary;
+            padding: 32px 16px;
+          }
+        }
+
+        &:last-child td {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
