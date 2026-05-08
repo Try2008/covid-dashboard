@@ -1,0 +1,29 @@
+<div class="trend-card">
+  <div class="card-header">
+    <div class="title-with-info">
+      <h3 class="card-title">{{ data.title }}</h3>
+      <span class="info-icon" *ngIf="data.tooltip" [title]="data.tooltip">i</span>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="main-value">
+      <ng-container *ngIf="isNumber(data.mainValue); else stringVal">
+        {{ data.mainValue | number:'1.0-0':'en-US' }}
+      </ng-container>
+      <ng-template #stringVal>{{ data.mainValue }}</ng-template>
+    </div>
+    
+    <div class="trend-info">
+      <span class="trend-percentage" [ngClass]="data.trendColor">
+        <span *ngIf="data.trendPercentage !== 0" class="trend-icon">{{ trendIcon }}</span>
+        {{ formattedTrend }}
+      </span>
+      <span class="trend-label">{{ data.trendLabel }}</span>
+    </div>
+
+    <div class="extra-line" *ngIf="data.extraLine">
+      {{ data.extraLine }}
+    </div>
+  </div>
+</div>

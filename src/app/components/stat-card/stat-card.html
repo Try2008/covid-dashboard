@@ -1,0 +1,27 @@
+<div class="stat-card">
+  <div class="card-header">
+    <div class="title-with-info">
+      <h3 class="card-title">{{ data.title }}</h3>
+      <span class="info-icon" *ngIf="data.tooltip" [title]="data.tooltip">i</span>
+    </div>
+    <div class="menu-dots" *ngIf="data.hasMenu">
+      <span class="material-icons">more_vert</span>
+    </div>
+  </div>
+
+  <div class="card-body" [class.no-main-value]="!data.mainValue">
+    <div class="main-value" *ngIf="data.mainValue !== undefined">
+      <ng-container *ngIf="isNumber(data.mainValue); else stringVal">
+        {{ data.mainValue | number:'1.0-0':'en-US' }}
+      </ng-container>
+      <ng-template #stringVal>{{ data.mainValue }}</ng-template>
+    </div>
+    
+    <div class="secondary-lines" *ngIf="data.secondaryLines?.length">
+      <div class="line" *ngFor="let line of data.secondaryLines">
+        <span class="line-value">{{ isNumber(line.value) ? (line.value | number:'1.0-0':'en-US') : line.value }}</span>
+        <span class="line-label">{{ line.label }}</span>
+      </div>
+    </div>
+  </div>
+</div>

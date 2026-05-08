@@ -1,0 +1,20 @@
+<section class="overview-section">
+  <!-- Main Stats Grid (5 cards) -->
+  <div class="main-stats-grid">
+    @for (stat of mainStats; track stat.id) {
+      <app-stat-card [data]="stat"></app-stat-card>
+    }
+  </div>
+
+  <!-- Weekly Summary Header -->
+  <div class="weekly-summary-header">
+    <h2>סיכום 7 ימים אחרונים</h2>
+  </div>
+
+  <!-- Weekly Stats Grid (3 cards) -->
+  <div class="weekly-stats-grid">
+    @for (trend of weeklyStats; track trend.id) {
+      <app-trend-card [data]="trend"></app-trend-card>
+    }
+  </div>
+</section>

@@ -1,0 +1,90 @@
+@import '../../../styles/variables';
+
+.trend-card {
+  background-color: $bg-card;
+  border-radius: $border-radius-card;
+  padding: 24px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .title-with-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .card-title {
+        font-size: 15px;
+        font-weight: $font-weight-normal;
+        color: $text-secondary;
+        margin: 0;
+      }
+
+      .info-icon {
+        width: 16px;
+        height: 16px;
+        background-color: #374F60;
+        color: #FFFFFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: help;
+      }
+    }
+  }
+
+  .card-body {
+    margin-top: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .main-value {
+      font-size: 36px;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .trend-info {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      font-size: 14px;
+      color: $text-secondary;
+
+      .trend-percentage {
+        font-weight: $font-weight-semibold;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        direction: ltr; /* Keeps the % sign on the correct side for LTR numbers */
+        
+        .trend-icon {
+          font-size: 12px;
+        }
+
+        &.positive { color: #27AE60; } // Green (good trend)
+        &.negative { color: #E74C3C; } // Red (bad trend)
+        &.neutral { color: $text-secondary; }
+      }
+    }
+
+    .extra-line {
+      margin-top: 4px;
+      font-size: 14px;
+      color: $text-secondary;
+    }
+  }
+}
