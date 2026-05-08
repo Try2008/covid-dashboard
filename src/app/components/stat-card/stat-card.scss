@@ -1,9 +1,15 @@
 @import '../../../styles/variables';
 
+:host {
+  display: block;
+  height: 100%;
+}
+
 .stat-card {
   background-color: $bg-card;
   border-radius: $border-radius-card;
   padding: 24px;
+  height: 100%;
   min-height: 140px;
   display: flex;
   flex-direction: column;
@@ -56,7 +62,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     .main-value {
       font-size: 36px;
@@ -87,13 +93,14 @@
 
     // Specfic layout for cards without a main value (e.g. Vaccinations)
     &.no-main-value {
-      justify-content: center;
+      justify-content: flex-start;
 
       .secondary-lines {
         gap: 8px;
 
         .line {
           justify-content: space-between;
+          flex-direction: row-reverse; // הופך את הסדר כך שהשם מימין והמספר משמאל
           
           .line-value {
             font-size: 16px;
