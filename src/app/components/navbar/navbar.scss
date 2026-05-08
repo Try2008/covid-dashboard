@@ -12,14 +12,14 @@ nav {
     max-width: 1600px;
     margin: 0 auto;
     height: 100%;
-    padding: 0 $spacing-lg;
+    padding: 0 40px; // פאדינג מוגדל בצדדים כדי שהטאבים לא ייגעו בקצה
   }
 
   .tabs-list {
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 16px; // מרווח נדיב בין הטאבים
+    gap: 8px; // מרווח קטן יותר בין הטאבים למראה קומפקטי
     margin: 0;
     padding: 0;
     list-style: none;
