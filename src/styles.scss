@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'styles/variables';
+@import 'styles/mixins';
 
 body {
   direction: rtl;
@@ -10,6 +11,15 @@ body {
   color: $text-primary;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// סקשנים בעלי id - מבטיחים שגלילה אליהם לא תיחבא תחת ה-header וה-navbar הסטיקיים
+.dashboard-main > [id] {
+  scroll-margin-top: 130px; // 64 (header) + 56 (navbar) + 10 buffer
+
+  @include mobile-only {
+    scroll-margin-top: 110px; // 56 (header) + 48 (navbar) + 6 buffer
+  }
 }
 
 // Global Box Sizing & Resets

@@ -2,16 +2,21 @@
 @import '../../../styles/mixins';
 
 $navbar-bg: #374F60;
+$navbar-height-desktop: 56px;
+$navbar-height-mobile: 48px;
 
 nav {
   background-color: $navbar-bg;
-  height: 56px;
+  height: $navbar-height-desktop;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
+  position: sticky;
+  top: 64px; // header height on desktop
+  z-index: 49;
 
   @include mobile-only {
-    height: 48px;
+    height: $navbar-height-mobile;
+    top: 56px; // header height on mobile
   }
 
   .navbar-container {
@@ -46,7 +51,7 @@ nav {
     min-height: 40px;
     flex-shrink: 0;
 
-    @include mobile-only {
+    @include below-desktop {
       display: flex;
     }
 
@@ -63,7 +68,7 @@ nav {
     display: none;
     color: #FFFFFF;
     font-family: $font-family-base;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: $font-weight-semibold;
     white-space: nowrap;
     overflow: hidden;
@@ -71,8 +76,12 @@ nav {
     flex: 1;
     min-width: 0;
 
-    @include mobile-only {
+    @include below-desktop {
       display: block;
+    }
+
+    @include mobile-only {
+      font-size: 14px;
     }
   }
 
@@ -97,7 +106,7 @@ nav {
       border-radius: 10px;
     }
 
-    @include mobile-only {
+    @include below-desktop {
       display: none;
       position: absolute;
       top: 100%;
@@ -106,7 +115,7 @@ nav {
       flex-direction: column;
       align-items: stretch;
       height: auto;
-      max-height: calc(100vh - 48px);
+      max-height: calc(100vh - #{$navbar-height-desktop} - 64px);
       overflow-y: auto;
       overflow-x: hidden;
       gap: 0;
@@ -120,6 +129,10 @@ nav {
         display: flex;
       }
     }
+
+    @include mobile-only {
+      max-height: calc(100vh - #{$navbar-height-mobile} - 56px);
+    }
   }
 
   .tab-item {
@@ -127,7 +140,7 @@ nav {
     display: flex;
     align-items: center;
 
-    @include mobile-only {
+    @include below-desktop {
       height: auto;
       width: 100%;
     }
@@ -149,7 +162,7 @@ nav {
     align-items: center;
     justify-content: center;
 
-    @include mobile-only {
+    @include below-desktop {
       width: 100%;
       justify-content: flex-start;
       text-align: right;
@@ -172,7 +185,7 @@ nav {
       color: $text-primary;
       font-weight: $font-weight-semibold;
 
-      @include mobile-only {
+      @include below-desktop {
         background-color: rgba(255, 255, 255, 0.15);
         color: #FFFFFF;
         border-right: 3px solid #FFFFFF;
@@ -183,15 +196,19 @@ nav {
   .menu-backdrop {
     display: none;
 
-    @include mobile-only {
+    @include below-desktop {
       display: block;
       position: fixed;
-      top: 48px; // navbar height on mobile, so navbar stays clickable
+      top: calc(64px + #{$navbar-height-desktop}); // header + navbar
       right: 0;
       bottom: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.3);
       z-index: 20;
+    }
+
+    @include mobile-only {
+      top: calc(56px + #{$navbar-height-mobile});
     }
   }
 }
