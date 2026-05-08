@@ -12,18 +12,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Global Box Sizing
+// Global Box Sizing & Resets
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-// Typography resets
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family-heading;
+  color: $text-heading;
+  font-weight: $font-weight-semibold;
   margin-top: 0;
-  color: $text-primary;
 }
 
 p {
   margin-top: 0;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: $accent-primary;
+  text-decoration: none;
 }

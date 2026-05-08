@@ -2,74 +2,53 @@
 // Design Tokens & Variables
 // ==========================================
 
-// 1. Colors
+// 1. System Colors (Backgrounds)
 // ------------------------------------------
-$color-primary: #3b82f6;      // Vibrant Blue
-$color-primary-dark: #2563eb;
-$color-primary-light: #93c5fd;
+$bg-main: #F8FAFD;            // רקע ראשי של העמוד
+$bg-card: #FFFFFF;            // רקע כרטיסיות
+$bg-banner: #E6F1F4;          // רקע באנר/badge עליון
+$bg-filter: #F7F9FC;          // רקע כפתורי פילטר
+$bg-header: #10162A;          // רקע Header (כהה מאוד)
+$bg-navbar: #222B45;          // רקע Navbar כהה
 
-$color-success: #10b981;      // Emerald Green
-$color-danger: #ef4444;       // Red
-$color-warning: #f59e0b;      // Amber
-$color-info: #0ea5e9;         // Sky Blue
-
-// Neutrals & Backgrounds
-$bg-main: #f8fafc;            // Off-white/light gray background
-$bg-card: #ffffff;            // White for cards
-$bg-hover: #f1f5f9;           // Hover state for elements
-
-// Text Colors
-$text-primary: #0f172a;       // Very dark blue/gray for main text
-$text-secondary: #475569;     // Slate gray for secondary text
-$text-muted: #94a3b8;         // Muted gray
-$text-light: #ffffff;         // White text
-
-// 2. Typography
+// 2. Text Colors
 // ------------------------------------------
-$font-family-base: 'Assistant', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-$font-family-heading: 'Heebo', 'Assistant', sans-serif;
+$text-primary: #222B45;       // טקסט ראשי
+$text-secondary: #5F7280;     // טקסט משני (אפור)
+$text-heading: #233333;       // כותרות עמוד
+$text-preview: #374F60;       // preview/header text
 
-// Font Sizes
-$font-size-xs: 0.75rem;       // 12px
-$font-size-sm: 0.875rem;      // 14px
-$font-size-base: 1rem;        // 16px
-$font-size-lg: 1.125rem;      // 18px
-$font-size-xl: 1.25rem;       // 20px
-$font-size-2xl: 1.5rem;       // 24px
-$font-size-3xl: 1.875rem;     // 30px
-$font-size-4xl: 2.25rem;      // 36px
+// 3. Accents & Actions
+// ------------------------------------------
+$accent-primary: #0068F5;     // כחול ראשי (links/active)
+$accent-light: #D5E0F4;       // כחול בהיר לכפתורים
 
-// Font Weights
+// 4. Chart Colors
+// ------------------------------------------
+$chart-blue: #5DADE2;         // כחול בהיר (עמודות, קווים)
+$chart-orange: #FF8A65;       // כתום (קו ממוצע)
+$chart-teal: #1E847F;         // ירוק-טורקיז (מאומתים/מחוסנים)
+$chart-lime: #A4C639;         // ירוק-ליים (לא מחוסנים/אנטיגן)
+$chart-purple: #B19CD9;       // סגול בהיר (קבוצות גיל)
+
+// 5. Borders & Dividers
+// ------------------------------------------
+$border-input: #E4E9F2;       // גבול select/inputs
+$border-divider: #D8D8D9;     // divider בכרטיסיות
+$border-radius-card: 8px;
+
+// 6. Typography
+// ------------------------------------------
+$font-family-base: 'Open Sans Hebrew', 'Open Sans', -apple-system, sans-serif;
+$font-weight-light: 300;
 $font-weight-normal: 400;
-$font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// 3. Spacing
+// 7. Spacing
 // ------------------------------------------
-$spacing-xs: 0.25rem;         // 4px
-$spacing-sm: 0.5rem;          // 8px
-$spacing-md: 1rem;            // 16px
-$spacing-lg: 1.5rem;          // 24px
-$spacing-xl: 2rem;            // 32px
-$spacing-2xl: 3rem;           // 48px
-
-// 4. Shadows & Effects
-// ------------------------------------------
-$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-$shadow-glow: 0 0 15px rgba($color-primary, 0.3);
-
-// 5. Borders & Radius
-// ------------------------------------------
-$border-color: #e2e8f0;
-$border-radius-sm: 0.25rem;   // 4px
-$border-radius-md: 0.5rem;    // 8px
-$border-radius-lg: 1rem;      // 16px
-$border-radius-full: 9999px;  // Pills/Circles
-
-// 6. Transitions
-// ------------------------------------------
-$transition-fast: 0.15s ease-in-out;
-$transition-normal: 0.3s ease-in-out;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;            // פאדינג כרטיסיות
+$spacing-lg: 20px;            // מרחק בין כרטיסיות
+$spacing-xl: 32px;
