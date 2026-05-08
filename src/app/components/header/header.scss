@@ -1,0 +1,65 @@
+@import '../../../styles/variables';
+
+header {
+  background-color: $bg-card; // לבן כמוסכם
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid $border-divider;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 $spacing-lg;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: $font-weight-bold;
+      color: $text-primary;
+      margin: 0;
+    }
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: $text-secondary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: $border-radius-card;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: $bg-filter;
+        color: $accent-primary;
+      }
+
+      .material-icons {
+        font-size: 24px;
+      }
+    }
+  }
+}
