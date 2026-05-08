@@ -52,3 +52,9 @@ $spacing-sm: 8px;
 $spacing-md: 16px;            // פאדינג כרטיסיות
 $spacing-lg: 20px;            // מרחק בין כרטיסיות
 $spacing-xl: 32px;
+
+// 8. Breakpoints
+// ------------------------------------------
+$breakpoint-mobile: 600px;    // mobile < 600px
+$breakpoint-tablet: 1024px;   // tablet < 1024px
+$breakpoint-desktop: 1440px;  // desktop < 1440px, wide >= 1440px

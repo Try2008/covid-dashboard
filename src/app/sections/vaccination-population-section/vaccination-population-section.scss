@@ -1,9 +1,20 @@
+@import '../../../styles/mixins';
+
 .charts-grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @include tablet-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
 }
 
 .cities-table-wrapper {
   margin-top: 24px;
+
+  @include mobile-only {
+    margin-top: 16px;
+  }
 }

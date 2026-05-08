@@ -1,0 +1,31 @@
+@import './variables';
+
+// Mobile only: < 600px
+@mixin mobile-only {
+  @media (max-width: #{$breakpoint-mobile - 1px}) { @content; }
+}
+
+// Tablet and up: >= 600px
+@mixin tablet-up {
+  @media (min-width: $breakpoint-mobile) { @content; }
+}
+
+// Tablet only: 600px - 1023px
+@mixin tablet-only {
+  @media (min-width: $breakpoint-mobile) and (max-width: #{$breakpoint-tablet - 1px}) { @content; }
+}
+
+// Desktop and up: >= 1024px
+@mixin desktop-up {
+  @media (min-width: $breakpoint-tablet) { @content; }
+}
+
+// Wide screens: >= 1440px
+@mixin wide-up {
+  @media (min-width: $breakpoint-desktop) { @content; }
+}
+
+// Below tablet (mobile + small): < 1024px
+@mixin below-desktop {
+  @media (max-width: #{$breakpoint-tablet - 1px}) { @content; }
+}

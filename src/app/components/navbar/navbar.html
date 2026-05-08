@@ -1,10 +1,23 @@
-<nav>
+<nav [class.menu-open]="menuOpen">
   <div class="navbar-container">
-    <ul class="tabs-list">
+    <button
+      class="hamburger-btn"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="תפריט ניווט"
+    >
+      <span class="material-icons">{{ menuOpen ? 'close' : 'menu' }}</span>
+    </button>
+
+    <span class="mobile-active-label" *ngIf="!menuOpen">{{ activeLabel }}</span>
+
+    <ul class="tabs-list" [class.is-open]="menuOpen" role="tablist">
       @for (tab of tabs; track tab.id) {
         <li class="tab-item">
-          <button 
-            class="tab-button" 
+          <button
+            class="tab-button"
+            type="button"
             [class.active]="tab.id === activeTabId"
             (click)="selectTab(tab.id)"
             [attr.aria-selected]="tab.id === activeTabId"
@@ -16,4 +29,6 @@
       }
     </ul>
   </div>
+
+  <div class="menu-backdrop" *ngIf="menuOpen" (click)="toggleMenu()"></div>
 </nav>

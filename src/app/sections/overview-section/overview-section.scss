@@ -1,33 +1,71 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .overview-section {
   padding: 24px 40px;
   max-width: 1600px;
   margin: 0 auto;
 
+  @include below-desktop {
+    padding: 20px 24px;
+  }
+
+  @include mobile-only {
+    padding: 16px 12px;
+  }
+
   .main-stats-grid {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
     align-items: stretch;
+
+    @include tablet-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include desktop-up {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
   }
 
   .weekly-summary-header {
     margin-top: 56px;
     margin-bottom: 24px;
 
+    @include mobile-only {
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
     h2 {
       font-size: 18px;
       font-weight: $font-weight-bold;
       color: $text-heading;
       margin: 0;
+
+      @include mobile-only {
+        font-size: 16px;
+      }
     }
   }
 
   .weekly-stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
     align-items: stretch;
+
+    @include tablet-up {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 }

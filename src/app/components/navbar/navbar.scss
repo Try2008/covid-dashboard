@@ -1,45 +1,124 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
-$navbar-bg: #374F60; // צבע ה-preview-color שנצפה מהמחקר
+$navbar-bg: #374F60;
 
 nav {
   background-color: $navbar-bg;
   height: 56px;
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+
+  @include mobile-only {
+    height: 48px;
+  }
 
   .navbar-container {
     max-width: 1600px;
     margin: 0 auto;
     height: 100%;
-    padding: 0 40px; // פאדינג מוגדל בצדדים כדי שהטאבים לא ייגעו בקצה
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @include below-desktop {
+      padding: 0 20px;
+    }
+
+    @include mobile-only {
+      padding: 0 12px;
+    }
+  }
+
+  .hamburger-btn {
+    display: none;
+    background: transparent;
+    border: 0;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+
+    @include mobile-only {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .material-icons {
+      font-size: 24px;
+    }
+  }
+
+  .mobile-active-label {
+    display: none;
+    color: #FFFFFF;
+    font-family: $font-family-base;
+    font-size: 14px;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+
+    @include mobile-only {
+      display: block;
+    }
   }
 
   .tabs-list {
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 8px; // מרווח קטן יותר בין הטאבים למראה קומפקטי
+    gap: 8px;
     margin: 0;
     padding: 0;
     list-style: none;
-    overflow-x: auto; // מאפשר גלילה אופקית אם הטאבים לא נכנסים
+    overflow-x: auto;
+    flex: 1;
 
-    // הסתרת ה-scrollbar
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 
-    &::-webkit-scrollbar {
-      height: 7px;
-    }
-    
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    
+    &::-webkit-scrollbar { height: 7px; }
+    &::-webkit-scrollbar-track { background: transparent; }
     &::-webkit-scrollbar-thumb {
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 10px;
+    }
+
+    @include mobile-only {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      flex-direction: column;
+      align-items: stretch;
+      height: auto;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      gap: 0;
+      padding: 8px 0;
+      background-color: $navbar-bg;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 30;
+
+      &.is-open {
+        display: flex;
+      }
     }
   }
 
@@ -47,6 +126,11 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
+
+    @include mobile-only {
+      height: auto;
+      width: 100%;
+    }
   }
 
   .tab-button {
@@ -60,10 +144,19 @@ nav {
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
-    white-space: nowrap; // למנוע שבירת שורות בטאבים
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include mobile-only {
+      width: 100%;
+      justify-content: flex-start;
+      text-align: right;
+      border-radius: 0;
+      padding: 12px 20px;
+      font-size: 14px;
+    }
 
     &:hover:not(.active) {
       background-color: rgba(255, 255, 255, 0.1);
@@ -78,6 +171,27 @@ nav {
       background-color: #FFFFFF;
       color: $text-primary;
       font-weight: $font-weight-semibold;
+
+      @include mobile-only {
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #FFFFFF;
+        border-right: 3px solid #FFFFFF;
+      }
+    }
+  }
+
+  .menu-backdrop {
+    display: none;
+
+    @include mobile-only {
+      display: block;
+      position: fixed;
+      top: 48px; // navbar height on mobile, so navbar stays clickable
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 20;
     }
   }
 }
