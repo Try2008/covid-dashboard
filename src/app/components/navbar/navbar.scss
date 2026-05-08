@@ -1,0 +1,83 @@
+@import '../../../styles/variables';
+
+$navbar-bg: #374F60; // צבע ה-preview-color שנצפה מהמחקר
+
+nav {
+  background-color: $navbar-bg;
+  height: 56px;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .navbar-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 $spacing-lg;
+  }
+
+  .tabs-list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 16px; // מרווח נדיב בין הטאבים
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto; // מאפשר גלילה אופקית אם הטאבים לא נכנסים
+
+    // הסתרת ה-scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      height: 7px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+  }
+
+  .tab-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .tab-button {
+    background-color: transparent;
+    color: #FFFFFF;
+    font-family: $font-family-base;
+    font-size: 15px;
+    font-weight: $font-weight-normal;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap; // למנוע שבירת שורות בטאבים
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(.active) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #FFFFFF;
+      outline-offset: 2px;
+    }
+
+    &.active {
+      background-color: #FFFFFF;
+      color: $text-primary;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}

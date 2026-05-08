@@ -1,0 +1,19 @@
+<nav>
+  <div class="navbar-container">
+    <ul class="tabs-list">
+      @for (tab of tabs; track tab.id) {
+        <li class="tab-item">
+          <button 
+            class="tab-button" 
+            [class.active]="tab.id === activeTabId"
+            (click)="selectTab(tab.id)"
+            [attr.aria-selected]="tab.id === activeTabId"
+            role="tab"
+          >
+            <span class="tab-label">{{ tab.label }}</span>
+          </button>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>
